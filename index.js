@@ -1,5 +1,10 @@
 var WhirApp = require('whir');
 
+var MyC = require('./app/controllers/base');
+
+
+var mc = new MyC()
+
 
 var app = new WhirApp({
 	some:'config'
