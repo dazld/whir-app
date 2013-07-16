@@ -4,17 +4,22 @@ var WhirController = require('whir/core/controllers/WhirController'),
 
 var MyC = WhirController.extend({
 
-
-	initialize: function(a, b, c) {
-		console.log(this.name)
+    routes: {
+        '':'index',
+        'something/else':'index'
+    },
+	initialize: function() {
+		// console.log(this.name)
 	},
 	index: function(req, res, params) {
-        console.log('default route',arguments);
         return 'hi there';
     },
 	users: function(req, res, params) {
         console.log('users route');
         return 'users';
+    },
+    notCallable: function(){
+        return 'uhoh';
     }
 
 });
