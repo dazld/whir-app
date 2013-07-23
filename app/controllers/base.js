@@ -3,6 +3,9 @@ var WhirController = require('whir/core/controllers/WhirController'),
     path = require('path'),
     Q = require('whir/node_modules/q');
 
+
+
+
 var MyC = WhirController.extend({
 
 
@@ -13,12 +16,12 @@ var MyC = WhirController.extend({
         var _this = this;
         var building = Q.defer();
 
-        
+
         var myView = new this.views['example-view']();
 
-        building.resolve(_this.hb.base({
-            content: _this.uuid
-        }));
+        var result = _this.templates.base(this);
+
+        building.resolve(result);
 
 
         return building.promise;
