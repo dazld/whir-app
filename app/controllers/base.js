@@ -31,7 +31,7 @@ var MyC = WhirController.extend({
         console.log('users route');
         return 'users';
     },
-    notCallable: function() {
+    _notCallable: function() {
         return 'uhoh';
     }
 
