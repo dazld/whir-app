@@ -17,18 +17,23 @@ var MyC = WhirController.extend({
         var building = Q.defer();
 
 
-        var myView = new this.views['example-view']();
+        var MyView = this.getSandboxedModule(require.resolve('../views/example-view'));
 
-        var result = _this.templates.base(this);
-
-        building.resolve(result);
+        var view = new MyView();
+        view.render();
+        
+        setTimeout(function(){
+            console.log(_this.uuid)
+            building.resolve(view.$el.html());
+        },3000);
+        
 
 
         return building.promise;
 
     },
     users: function(req, res, params) {
-        console.log('users route');
+        console.log('users route');l
         return 'users';
     },
     _notCallable: function() {
