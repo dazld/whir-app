@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "underscore": "~1.5.1",
-    "whir":"git@github.com:dazld/whir.git"
+    "underscore": "~1.5.1"
   }
 }

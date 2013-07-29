@@ -23,7 +23,7 @@ var MyC = WhirController.extend({
         view.render();
         
         setTimeout(function(){
-            console.log(_this.uuid)
+            console.log(_this.uuid);
             building.resolve(view.$el.html());
         },3000);
         
