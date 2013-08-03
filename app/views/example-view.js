@@ -1,22 +1,22 @@
+
 var BaseView = require('whir/core/views/WhirView');
 var _ = require('underscore');
-
-var $UserModel = require('../models/user_model');
-var $UserId = 'original';
+var UserModel = require('../models/user_model');
 
 
 var MyView = BaseView.extend({
 
 	tagName: 'div',
 
-	initialize: function($UserId) {
-		this.uid = $UserId;
+	initialize: function() {
+		
+		
 	},
 
 	render: function() {
 
 		this.$el.empty();
-		this.$el.html(this.uid);
+		this.$el.html(JSON.stringify(this.model.toJSON()));
 		
 	}
     

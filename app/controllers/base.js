@@ -5,35 +5,46 @@ var WhirController = require('whir/core/controllers/WhirController'),
 
 
 
-
 var MyC = WhirController.extend({
 
 
     initialize: function() {
-        // console.log(this.name)
+        console.log('init: ', this.name);
+
+        // setup the internal sandbox, if wanted
+        this._createSandbox({
+            $UserId: this.requestData.get('uuid')
+        });
+
+        // ..but also have a BB model with state data in it on the instance
+        // console.log(this.requestData.toJSON());
+
     },
     index: function(req, res, params) {
         var _this = this;
         var building = Q.defer();
 
 
-        var MyView = this.getSandboxedModule(require.resolve('../views/example-view'));
+        // var MyView = this.getSandboxedModule(require.resolve('../views/example-view'));
+        var MyView = require('../views/example-view');
 
-        var view = new MyView();
+        var view = new MyView({
+            model: this.requestData
+        });
+
         view.render();
-        
-        setTimeout(function(){
-            console.log(_this.uuid);
+
+        setTimeout(function() {
             building.resolve(view.$el.html());
-        },3000);
-        
+        }, 10);
+
 
 
         return building.promise;
 
     },
     users: function(req, res, params) {
-        console.log('users route');l
+        console.log('users route');
         return 'users';
     },
     _notCallable: function() {
