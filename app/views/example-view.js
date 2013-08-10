@@ -8,13 +8,13 @@ var MyView = BaseView.extend({
 
 	tagName: 'div',
 
-	initialize: function() {
-		
+	initialize: function(options) {
+		this.template = options.template;
 		
 	},
 
 	render: function() {
-
+		var html = this.template(this.model.toJSON());
 		this.$el.empty();
 		this.$el.html(JSON.stringify(this.model.toJSON()));
 		
