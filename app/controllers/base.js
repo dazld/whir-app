@@ -22,7 +22,8 @@ var MyC = WhirController.extend({
     },
     index: function(param1,param2) {
 
-        console.log(arguments);
+        param1 = param1 || 'default 1';
+        param2 = param2 || 'default 2';
 
         var _this = this;
         var building = Q.defer();
@@ -33,8 +34,7 @@ var MyC = WhirController.extend({
         var MyView = require('../views/example-view');
 
         var view = new MyView({
-            model: this.requestData,
-            template: base_tpl
+            model: this.requestData
         });
 
         view.render();
@@ -42,7 +42,9 @@ var MyC = WhirController.extend({
         var html = base_tpl({
             title: 'hi',
             one: param1,
-            two: param2
+            two: param2,
+            content_view: view.$el
+
         });
 
         building.resolve(html);
